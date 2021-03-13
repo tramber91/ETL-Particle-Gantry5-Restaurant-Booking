@@ -1,0 +1,350 @@
+//bookingform main
+.etl-restobooking-main {
+	#{$all-text-inputs} {
+    vertical-align: middle;
+    box-shadow: $base-box-shadow;
+    font-size: $core-font-size;
+    width: 100%;
+    line-height: $core-line-height;
+    @include transition(border-color 0.2s);
+	}
+	#{$all-text-inputs-hover} {
+    border-color: $border-color-hover;
+	}
+	#{$all-text-inputs-focus} {
+    border-color: $border-color-focus; 
+	}
+	h2 {
+  	margin-bottom: 0.15rem;
+	}
+	.etl-restobooking-headtext {
+  	margin-bottom: 1rem;
+	}
+	.etl-restobooking-footer {
+  	margin-top: 1rem;
+	}
+    .g-content {
+        padding: $content-padding - 1 $content-padding - 1 0 $content-padding - 1;
+    }
+    
+    @include breakpoint(tablet-range) {
+        width: 100%;
+        @include flex(0 100%);
+    }
+    position: relative;
+    z-index: 3;
+
+    .etl-restobooking-block {
+        @include display(flex);
+        @include breakpoint(mobile-only) {
+            @include flex-flow(row wrap);
+        }
+
+        .etl-restobooking-item {
+            @include flex(1 0 10rem);
+            @include breakpoint(mobile-only) {
+                @include flex(0 0 100%);
+            }
+            margin-bottom: 0;
+        }
+        .etl-restobooking-spinner {
+            @include flex(0 0 10%);
+            @include breakpoint(mobile-only) {
+                @include flex(0 0 100%);
+            }
+        }
+        .etl-restobooking-buttonsubmit{
+            @include flex(0 0 auto);
+            @include breakpoint(mobile-only) {
+                @include flex(0 0 100%);
+            }
+        }
+    }
+}
+//bookingform item
+.etl-restobooking {
+    white-space: nowrap;
+    .etl-restobooking-item {
+        //color: lighten($base-text-color, 10%);
+        position: relative;
+        margin-right: $content-margin;
+        margin-bottom: $content-margin;
+        .dir-rtl & {
+            margin-right: 0;
+            margin-left: $content-margin;
+        }
+
+        @include breakpoint(mobile-only) {
+            margin-bottom: $content-margin;
+        }
+
+        input[type="text"], textarea {
+            font-size: 1.1vw;
+			border-color: lighten($base-text-color, 40%);
+            @include breakpoint(tablet-range) {
+                font-size: $core-font-size;
+            }
+            @include breakpoint(mobile-only) {
+                font-size: $core-font-size;
+            }
+            color: lighten($base-text-color, 20%);
+        }
+        label {
+            margin-bottom: $content-margin;
+            display: block;
+        }
+        &.etl-restobooking-spinner {
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+        &.etl-restobooking-calendar {
+            .fa-calendar {
+                margin-left: -33px;
+                opacity: 0.9;
+                pointer-events: none;
+
+                .dir-rtl & {
+                    margin-left: auto;
+                    margin-right: -33px;
+                }
+            }
+        }
+    }
+    .etl-restobooking-thankyou, .etl-restobooking-error {
+        display: none;
+    }
+    .etl-restobooking-buttonsubmit {
+        label {
+            margin-bottom: $content-margin;
+            display: block;
+            @include breakpoint(mobile-only) {
+                display: none;
+            }
+        }
+        @include breakpoint(mobile-only) {
+            margin-top: $content-padding - 1;
+        }
+        @include breakpoint(mobile-only) {
+            width: 100%;
+        }
+
+        .button {
+            margin-bottom: 0;
+            font-size: 1.1vw;
+            @include breakpoint(tablet-range) {
+                font-size: $core-font-size;
+            }
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                font-size: $core-font-size;
+            }
+        }
+    }
+
+    // etl-restobooking-spinners
+    .etl-restobooking-spinners {
+        display: inline-block;
+        margin-left: -22px;
+        vertical-align: middle;
+        line-height: 1px;
+        z-index: 2;
+        position: relative;
+        padding-bottom:10px;
+        .dir-rtl & {
+            left: 22px;
+        }
+        i {
+            font-weight: 600;
+        }
+        a {
+            display: block;
+            color: $base-text-color;
+
+            &:hover {
+                color: $accent-color-1;
+            }
+        }
+    }
+
+    .alert {
+        border-width: 1px;
+        border-style: solid;
+        border-radius: $border-radius;
+        white-space: normal;
+    }
+
+    .etl-restobooking-item-required-highlighted {
+        background: rgba(255,0,0, 0.1);
+
+        &:hover {
+            border-color: rgba(255,0,0, 0.5);
+        }
+    }
+}
+
+//Manage Dark module Box3 Box 4 color 
+.box3 {
+   .etl-restobooking-main .etl-restobooking-block {
+    background: $accent-color-1;
+    }
+   .etl-restobooking .etl-restobooking-item label {
+     color: $white;
+    }
+   .etl-restobooking-item-required-highlighted {
+       background: rgba(0, 0, 0, 0.40);
+        &:hover {
+           background: rgba(0, 0, 0, 0.55);
+        }
+    }
+}
+.box4 {
+   .etl-restobooking-main .etl-restobooking-block {
+    background: $accent-color-2;
+    }
+   .etl-restobooking .etl-restobooking-item label {
+     color: $white;
+    }
+	.etl-restobooking-item-required-highlighted {
+     background: rgba(0, 0, 0, 0.40);
+        &:hover {
+           background: rgba(0, 0, 0, 0.55);
+        }
+    }
+}
+
+.etl-restobooking .etl-restobooking-item .fa-calendar, .etl-restobooking .etl-restobooking-spinners i {
+  color: lighten($base-text-color, 10%);
+}
+
+// Date Picker
+.ui-datepicker {
+    padding: 0;
+}
+
+.ui-widget-content {
+    border: none;
+    background: $base-background;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.19);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.19);
+    box-shadow: 0 1px 3px rgba(0,0,0,.19);
+}
+
+.ui-datepicker-header {
+    position: relative;
+    color: $base-background;
+    padding: 0;
+    border-bottom: none;
+    overflow: hidden;
+    text-transform: uppercase;
+    background: $accent-color-2;
+}
+
+.ui-datepicker-header .ui-state-hover {
+    background: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.ui-datepicker .ui-datepicker-title {
+    line-height: 2.2em;
+    font-weight: normal;
+    text-align: center;
+
+    i {
+        display: none;
+    }
+}
+
+.ui-icon {
+    i.fa {
+        margin-top: 10px;
+        text-align: center;
+        display: block;
+        color: $base-background;
+    }
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    position: absolute;
+    background: $accent-color-1;
+    border: none;
+    height: 2.2em;
+    width: 1.4em;
+}
+
+.ui-datepicker .ui-datepicker-prev.ui-state-hover,
+.ui-datepicker .ui-datepicker-next.ui-state-hover {
+    background: $accent-color-2;
+    border-color: $accent-color-2;
+}
+
+.ui-datepicker .ui-datepicker-prev {
+    left: 0;
+    border-right: 1px solid $accent-color-1;
+}
+
+.ui-datepicker .ui-datepicker-next {
+    right: 0;
+    border-left: 1px solid $accent-color-1;
+}
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+    margin-top: -4px;
+    top: 40%;
+}
+
+.ui-datepicker table {
+    margin: 0;
+}
+
+.ui-datepicker th {
+    padding: .6em 0 .4em;
+    text-transform: uppercase;
+    color: lighten($base-text-color, 10%);
+    font-size: .8em;
+    text-align: center;
+    border-top: 1px solid lighten($base-text-color, 50%);
+	background:$base-background;
+}
+
+.ui-datepicker td {
+    border: none;
+    padding: 0;
+    border-top: 1px solid lighten($base-text-color, 50%);
+    border-right: 1px solid lighten($base-text-color, 50%);
+
+    span, a {
+        display: block;
+        padding: $content-margin;
+        @include breakpoint(mobile-only) {
+            padding: $content-margin - 0.3;
+        }
+    }
+}
+
+td:last-child {
+    border-right: 0;
+}
+
+td .ui-state-default {
+    background: transparent;
+    border: none;
+    color: lighten($base-text-color, 20%);
+    margin: 0;
+    text-align: center;
+}
+
+.ui-datepicker-etl-restobooking-calendar .ui-state-hover {
+    background: #ededed;
+    color: #b2b2b2;
+}
+
+td a.ui-state-active,
+td a.ui-state-active.ui-state-hover {
+    color: $base-background;
+    background: $accent-color-2;
+}
+

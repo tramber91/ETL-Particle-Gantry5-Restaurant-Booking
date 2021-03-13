@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="file" method="upgrade" version="1.0">
+    <name>ETL particle Resto Booking (EN)</name>
+    <version>1.0</version>
+    <creationDate>11.11.2017</creationDate>
+    <author>Bertrand Pascal - En Toutes Lettres</author>
+    <authorEmail>webmaster@en-toutes-lettres.fr</authorEmail>
+    <authorUrl>http://www.en-toutes-lettres.fr</authorUrl>
+    <copyright>(C) 2017 En Toutes Lettres</copyright>
+    <license>MIT - see LICENSE.pdf</license>
+    <packager>En Toutes Lettres</packager>
+    <packagerurl>https://www.en-toutes-lettres.fr</packagerurl>
+    <description>
+        <![CDATA[<h3>Particle "Restaurant Booking" for Gantry 5 v1.0 - Template Hydrogen (English version)</h3>
+		<h4>This particle follows the general principle of the "Booking Form" particle of RocketTheme presented with the Sienna template.</h4> 
+		<h4>Adaptation for Hydrogen by En Toutes Lettres (https://www.en-toutes-lettres.fr)</h4>
+		<h4>Don't forget to add this line</h4>
+		<h3><span style="color:#0000FF">@import 'etl_restobooking'; </span></h3>
+		<h4>in your custom CSS file, custom.scss (/templates/g5_hydrogen/custom/scss/custom.scss)</h4>
+        <h4>or create this file and add this line with your text editor (/templates/g5_hydrogen/custom/scss/custom.scss)</h4>]]>
+    </description>
+    <fileset>
+        <files folder="particles" target="templates/g5_hydrogen/custom/particles"><filename>etl_restobooking.html.twig</filename><filename>etl_restobooking.yaml</filename></files>
+		<files folder="js" target="templates/g5_hydrogen/custom/js"><filename>datepicker.js</filename><filename>datepicker-de.js</filename><filename>datepicker-fr.js</filename><filename>datepicker-es.js</filename><filename>datepicker-it.js</filename><filename>datepicker-pt.js</filename><filename>etl_restobooking.js</filename><filename>spinner.js</filename></files>
+		<files folder="scss" target="templates/g5_hydrogen/custom/scss"><filename>etl_restobooking.scss</filename></files>
+     </fileset>
+</extension>

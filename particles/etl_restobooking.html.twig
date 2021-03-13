@@ -1,0 +1,93 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="etl-restobooking-main {{ particle.class|e }}">
+    {% if particle.title %}<div class="g-title"><h2>{{ particle.title|raw }}</h2></div>{% endif %}
+    {% if particle.headtext %}<div class="etl-restobooking-headtext">{{ particle.headtext|raw }}</div>{% endif %}
+    {% if particle.token %}
+    <form id="etl-restobooking-{{ id }}" data-bookingform-id="etl-restobooking-{{ id }}" data-bookingform-token="{{ particle.token }}" data-bookingform-requiredmessage="{{ particle.required }}" class="etl-restobooking" action="#" method="post">
+        <fieldset>
+            
+	 <div class="etl-restobooking-block">
+		
+                {% for item in particle.items %}
+                <div class="etl-restobooking-item {% if item.type == 'spinner' %}etl-restobooking-spinner{% endif %} {% if item.type == 'datepicker' %}etl-restobooking-calendar{% endif %}" {% if item.type == 'spinner' %}data-trigger="spinner" class="etl-restobooking-spinner"{% endif %}>
+                    {% if item.label %}
+                    <label for="etl-restobooking-item-id-{{ loop.index }}">{{ item.label }}{% if item.required == 'enabled' %}<sup>*</sup>{% endif %}</label>
+                    {% endif %}
+                    <input type="text" class="{% if item.type == 'datepicker' %}etl-restobooking-datepicker{% endif %}{% if item.required == 'enabled' %} etl-restobooking-item-required{% endif %}" name="{{ item.label|title|replace({' ':''})|replace({'é':'e'}) }}" {% if item.required == 'enabled' %}required="required"{% endif %} id="etl-restobooking-item-id-{{ loop.index }}" placeholder="{{ item.placeholder }}" {% if item.type == 'spinner' %}data-min="{{ item.min }}" data-max="{{ item.max }}"{% endif %}>
+                    {% if item.type == 'datepicker' %}
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if item.type == 'spinner' %}
+                    <div class="etl-restobooking-spinners">
+                        <a href="javascript:;" data-spin="up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+                        <a href="javascript:;" data-spin="down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+	 </div>	
+	{% if particle.showcomment %}
+	 <div class="etl-restobooking-block">
+		 	{% if particle.comment %}
+                <div class="etl-restobooking-item">
+                <label for="etl-restobooking-item-comment">{{ particle.comment }}</label>
+                <textarea type="text" name="Comment" id ="etl-restobooking-item-comment" class="etl-restobooking-item-comment"  placeholder="{{ particle.comment_placeholder }}"></textarea>
+                </div>
+            {% endif %}
+     </div>
+	{% endif %}
+            <div class="etl-restobooking-block">
+                
+                {% if particle.name %}
+                <div class="etl-restobooking-item">
+                    <label for="etl-restobooking-item-name">{{ particle.name }}<sup>*</sup></label>
+                    <input type="text" name="Name" id ="etl-restobooking-item-name" class="etl-restobooking-item-required"  placeholder="{{ particle.name_placeholder }}">
+                </div>
+                {% endif %}
+                {% if particle.email %}
+                <div class="etl-restobooking-item">
+                    <label for="etl-restobooking-item-email">{{ particle.email }}<sup>*</sup></label>
+                    <input type="text" name="Email" id ="etl-restobooking-item-email" class="etl-restobooking-item-required"  placeholder="{{ particle.email_placeholder }}">
+                </div>
+                {% endif %}
+                <div class="etl-restobooking-buttonsubmit">
+                    <label for="button">&nbsp;</label>
+                    <a href="javascript:;" class="button {{ particle.buttonclass|e }}">{{ particle.buttonsubmit|default('Submit')|raw }}</a>
+                </div>
+            </div>
+            <div class="etl-restobooking-thankyou">
+                <p class="alert alert-success"><i class="fa fa-check-circle" aria-hidden="true"></i>  {{ particle.thankyou }}</p>
+            </div>
+            <div class="etl-restobooking-error">
+                <p class="alert alert-error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  {{ particle.error }}</p>
+            </div>
+
+        </fieldset>
+    </form>
+    {% endif %}
+	{% if particle.footer %}<div class="etl-restobooking-footer">{{ particle.footer|raw }}</div>{% endif %}
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+<script src="{{ url('gantry-theme://js/datepicker.js') }}"></script>
+{% if particle.langue == 'fr-FR' %}
+<script src="{{ url('gantry-theme://js/datepicker-fr.js') }}"></script>
+ {% endif %}
+{% if particle.langue == 'es-ES' %}
+<script src="{{ url('gantry-theme://js/datepicker-es.js') }}"></script>
+ {% endif %}
+{% if particle.langue == 'it-IT' %}
+<script src="{{ url('gantry-theme://js/datepicker-it.js') }}"></script>
+ {% endif %}
+{% if particle.langue == 'de-DE' %}
+<script src="{{ url('gantry-theme://js/datepicker-de.js') }}"></script>
+ {% endif %}
+{% if particle.langue == 'pt-PT' %}
+<script src="{{ url('gantry-theme://js/datepicker-pt.js') }}"></script>
+ {% endif %}
+<script src="{{ url('gantry-theme://js/spinner.js') }}"></script>
+<script src="{{ url('gantry-theme://js/etl_restobooking.js') }}"></script>
+{% endblock %}
